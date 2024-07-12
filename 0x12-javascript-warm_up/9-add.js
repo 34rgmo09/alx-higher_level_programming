@@ -1,7 +1,14 @@
 #!/usr/bin/node
+const process = require('process');
+const arg = process.argv[2];
+const arg2 = process.argv[3];
+
 function add (a, b) {
-  const c = a + b;
-  console.log(c);
+  return (a + b);
 }
 
-add(Number(process.argv[2]), Number(process.argv[3]));
+if (parseInt(arg) && parseInt(arg2)) {
+  console.log(add(parseInt(arg), parseInt(arg2)));
+} else {
+  console.log(NaN);
+}

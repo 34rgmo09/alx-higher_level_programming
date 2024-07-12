@@ -1,1 +1,3 @@
-# 0x12-javascript-warm_up
+# Javascript Warmup
+
+This directory contains my javascript tasks from alx

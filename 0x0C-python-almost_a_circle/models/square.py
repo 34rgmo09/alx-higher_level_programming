@@ -1,66 +1,64 @@
 #!/usr/bin/python3
-
-"""Write a child class Square"""
+"""Define Rectangle Class
+"""
 
 from models.rectangle import Rectangle
 
 
 class Square(Rectangle):
-    """
-    A subclass of class Rectangle
-    args:
-        size: size
-        x: position
-        y: position
-        id: id
-    """
-    def __init__(self, size, x=0, y=0, id=None):
-        """class constructor"""
-        super().__init__(size, size, x, y, id)
-        self.size = size
+    """Module Representation of Square
+"""
 
-    def __str__(self):
-        """Returns a string representation of a square instance"""
-        return f"[Square] ({self.id}) {self.x}/{self.y} - {self.width}"
+    def __init__(self, size, x=0, y=0, id=None):
+        """Initialization a Square
+        """
+        super().__init__(size, size, x, y, id)
 
     @property
     def size(self):
-        """Retrieve attribute from class Rectangle"""
+        """module Square size getter
+        """
         return self.width
 
     @size.setter
     def size(self, value):
-        """validation from class Rectangle"""
+        """module Square size setter
+        """
         self.width = value
         self.height = value
 
+    def __str__(self):
+        """module string represation of square
+        """
+        return "[Square] ({:d}) {:d}/{:d} - {:d}".format(self.id,
+                                                         self.x,
+                                                         self.y,
+                                                         self.width)
+
     def update(self, *args, **kwargs):
-        """assigns an argument to each attribute"""
+        """module update square
+        """
         if len(args):
-            for i, a in enumerate(args):
+            for i, arg in enumerate(args):
                 if i == 0:
-                    self.id = a
+                    self.id = arg
                 elif i == 1:
-                    self.size = a
+                    self.size = arg
                 elif i == 2:
-                    self.x = a
+                    self.x = arg
                 elif i == 3:
-                    self.y = a
+                    self.y = arg
         else:
-            if "id" in kwargs:
-                self.id = kwargs["id"]
-            if "size" in kwargs:
-                self.size = kwargs["size"]
-            if "x" in kwargs:
-                self.x = kwargs["x"]
-            if "y" in kwargs:
-                self.y = kwargs["y"]
+            for key, value in kwargs.items():
+                if hasattr(self, key) is True:
+                    setattr(self, key, value)
 
     def to_dictionary(self):
-        """Returns dict representation of a Rectangle"""
+        """retrun dictonary
+        """
         return {
             "id": self.id,
-            "x": self.x,
             "size": self.size,
-            "y": self.y,
-            }
+            "x": self.x,
+            "y": self.y
+        }

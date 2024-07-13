@@ -1,4 +1,1 @@
-## Python Network O
-
-Learning about cURL, HTTP, POST, GET, PUT, DELETE
-Http protocols etc
+# 0x10-python-network_0

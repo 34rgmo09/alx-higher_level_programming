@@ -1,3 +1,3 @@
 #!/bin/bash
-# Will display all methods that a server accepts
-curl -sI -X OPTIONS "$1" | awk -F ': ' '/Allow/ {print $2}'
+# display all HTTP methods the server will accept using curl.
+curl -sI "$1" | grep "Allow" | cut -d " " -f 2-
